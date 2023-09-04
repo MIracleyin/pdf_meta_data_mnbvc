@@ -38,14 +38,19 @@ def write_meta_info_to_jsonl(pdf_dir, jsonl_path):
             pdf_file = pdf_file.with_suffix(pdf_file.suffix.lower())
             if pdf_file.suffix != '.pdf':
                 continue
-            # read the pdf file
+            # read the pdf file and get simple meta info
             pdfinfo = dict()
-            pdfinfo.update({"filename": str(pdf_file)})
+            pdfinfo.update({
+                "file_name": str(pdf_file),
+                "file_size": str(pdf_file.stat().st_size)
+            })
             try:
                 pdf = pikepdf.Pdf.open(pdf_file)
                 docinfo = pdf.docinfo
                 for key, value in docinfo.items():
                     pdfinfo.update({key: str(value)})
+                if len(pdfinfo.items()) == 2:
+                    logger.warning(f"{pdf_file} Don't have any meta data")
                 readable += 1
             except Exception as e:
                 pdfinfo.update({'error': str(e)})
