@@ -26,15 +26,17 @@ pikepdf工具解析pdf文件可以获得以下元数据信息(具体可获得的
 
 示例代码中提取的元数据字段出现频率如下：
 
-> /CreationDate       1.000000
-> /Creator            0.857143
-> /Keywords           0.571429
-> /ModDate            1.000000
-> /PTEX.Fullbanner    0.857143
-> /Producer           1.000000
-> /Subject            1.000000
-> /Title              1.000000
-> /Trapped            0.857143
+> file_name        1.000000
+> file_size        1.000000
+> /Author          0.557461
+> /CreationDate    0.952270
+> /Creator         0.756815
+> /Producer        0.953745
+> /Title           0.612116
+> others           1.000000
+> num_meta         1.000000
+> /ModDate         0.825204
+> /Keywords        0.230727
 
 生成的词云如下：
 
