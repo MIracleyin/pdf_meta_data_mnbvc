@@ -44,18 +44,11 @@ def check_data(source_path, new_path, save_meta_info):
         with jsonlines.open(new_path, "w") as writer:
             for pdfinfo in tqdm(reader):
                 newinfo = {}
-                otherinfo = ""
-                count = 0
                 for k, v in pdfinfo.items():
-                    count += 1
                     if k in save_meta_info:
                         newinfo.update({
                             k: v
                         })
-                    else:
-                        otherinfo += f"{k}:{v};"
-                newinfo.update({"others": otherinfo})
-                newinfo.update({"num_meta": count})
                 writer.write(newinfo)
                 del newinfo
         writer.close()
